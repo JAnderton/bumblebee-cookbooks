@@ -1,2 +1,2 @@
 # bumblebee-cookbooks
-gs
+Cookbooks for setting up the bumblebee server to enable continuous delivery
