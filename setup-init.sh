@@ -18,3 +18,6 @@ sudo apt-get install git
 #git config --global user.name "Karun Japhet"
 #git config --global user.email karun@japhet.in
 #git config --global push.default simple
+
+echo ">> Fetching cookbooks"
+git clone https://github.com/JAnderton/bumblebee-cookbooks.git
