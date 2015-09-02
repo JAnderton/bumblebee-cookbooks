@@ -7,9 +7,17 @@ Cookbooks for setting up the bumblebee server to enable continuous delivery
 knife bootstrap {host} --ssh-user {username} --ssh-password '{password}' --sudo --use-sudo-password --run-list=role[webserver]
 ```
 
+Optionally, you could use the passwordless login method with a keyfile
+```sh
+knife bootstrap {host} --ssh-user {username} --identity-file {keyfile} --sudo --use-sudo-password --run-list=role[webserver]
+```
+
 #### Vagrant specific configs
 In case you're testing this on vagrant, here are the default variable names you need
-username and password are 'vagrant' :)
+* host: `localhost:2222`
+* username: `vagrant`
+* password: `vagrant`
+* keyfile: `{vagrantDir}\vagrant.key`
 
 ### Upload all cookbooks from development workspace
 ```sh

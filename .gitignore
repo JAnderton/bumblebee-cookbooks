@@ -30,6 +30,9 @@ tramp
 *.tmproject
 tmtags
 
+# IntelliJ
+.idea
+
 # Vim
 .*.s[a-w][a-z]
 *.un~
