@@ -1,0 +1,22 @@
+{
+  "chef":{
+    "node_name":"vagrant-debian"
+  },
+  "cookbook":{
+    "copyright":"Karun Japhet",
+    "email":"karun@japhet.in",
+    "license":"apache"
+  },
+  "vagrant":{
+    "vm":{
+      "box":"debian/jessie64",
+      "forward_port":{
+        "80":"9999"
+      },
+      "provision":"chef_server"
+    }
+  },
+  "ssl":{
+    "verify":true
+  }
+}
