@@ -1,4 +1,0 @@
-source "https://supermarket.chef.io"
-
-# Base Blocks
-cookbook "nginx"
