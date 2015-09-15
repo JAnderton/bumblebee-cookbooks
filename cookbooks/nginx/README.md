@@ -8,7 +8,7 @@ Installs nginx from package OR source code and sets up configuration handling si
 
 # READ THIS FIRST
 
-After having struggled with the cookbook format and the interfaces being brittle, the maintainers have decided to begin rewriting the core implmenetation of the nginx cookbook from the ground up, to allow for better flexibility, testability and maintianability.
+After having struggled with the cookbook format and the interfaces being brittle, the maintainers have decided to begin rewriting the core implementation of the nginx cookbook from the ground up, to allow for better flexibility, testability and maintainability.
 
 To this end, we request that you not open new issues for the existing codebase.
 
