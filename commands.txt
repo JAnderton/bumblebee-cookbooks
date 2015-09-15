@@ -1,5 +1,0 @@
-knife bootstrap localhost:2222 --ssh-user vagrant --ssh-password 'vagrant' --sudo --use-sudo-password --run-list=role[webserver]
-
-knife cookbook upload --all
-knife role from file roles/*.rb
-knife data bag from file --all

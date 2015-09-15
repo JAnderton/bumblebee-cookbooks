@@ -54,3 +54,8 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
+
+# Berks
+.vagrant
+/cookbooks
+Berksfile.lock
