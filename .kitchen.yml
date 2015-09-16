@@ -7,10 +7,9 @@ provisioner:
 
 platforms:
   - name: debian/jessie64
-  - name: ubuntu/vivid64
 
 suites:
   - name: default
     run_list:
-      - recipe[nginx::default]
+      - recipe[bumblebee-cookbooks::default]
     attributes:

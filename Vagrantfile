@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  config.vm.hostname = 'bumblebee-cookbooks-berkshelf'
+  config.vm.hostname = '.-berkshelf'
 
   # Set the version of chef to install using the vagrant-omnibus plugin
   # NOTE: You will need to install the vagrant-omnibus plugin:
@@ -79,10 +79,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :chef_client do |chef|
     chef.chef_server_url        = 'https://api.opscode.com/organizations/prorthymix'
     chef.validation_client_name = 'prorthymix-validator'
-    chef.validation_key_path    = '.chef/prorthymix-validator.pem'
+    chef.validation_key_path    = '/Users/karun/workspace/bumblebee-cookbooks/.chef/prorthymix-validator.pem'
 
     chef.run_list = [
-      'recipe[nginx::default]'
+      'recipe[.::default]'
     ]
   end
 end

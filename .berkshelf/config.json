@@ -2,7 +2,7 @@
   "cookbook":{
     "copyright":"Karun Japhet",
     "email":"karun@japhet.in",
-    "license":"apache"
+    "license":"apachev2"
   },
   "vagrant":{
     "vm":{
