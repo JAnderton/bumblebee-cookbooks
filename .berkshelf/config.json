@@ -1,7 +1,4 @@
 {
-  "chef":{
-    "node_name":"vagrant-debian"
-  },
   "cookbook":{
     "copyright":"Karun Japhet",
     "email":"karun@japhet.in",
