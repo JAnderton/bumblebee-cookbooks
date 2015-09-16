@@ -10,6 +10,6 @@ describe 'User Management' do
   end
 
   it 'should assign group www to user www-nginx' do
-    expect(user('www-nginx')).to belong_to_group 'www'
+    expect(user 'www-nginx').to belong_to_group 'www'
   end
 end
