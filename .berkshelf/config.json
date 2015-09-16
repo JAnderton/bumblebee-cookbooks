@@ -13,7 +13,7 @@
       "forward_port":{
         "80":"9999"
       },
-      "provision":"chef_server"
+      "provision":"chef_client"
     }
   },
   "ssl":{

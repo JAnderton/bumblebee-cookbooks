@@ -59,5 +59,10 @@ $RECYCLE.BIN/
 .vagrant
 /cookbooks
 Berksfile.lock
+
+# Kitchen
 .kitchen/
 .kitchen.local.yml
+
+# Gems
+Gemfile.lock

@@ -76,4 +76,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # to skip installing and copying to Vagrant's shelf.
   # config.berkshelf.except = []
 
+  config.vm.provision :chef_client do |chef|
+    chef.chef_server_url        = 'https://api.opscode.com/organizations/prorthymix'
+    chef.validation_client_name = 'prorthymix-validator'
+    chef.validation_key_path    = '.chef/prorthymix-validator.pem'
+
+    chef.run_list = [
+      'recipe[nginx::default]'
+    ]
+  end
 end
