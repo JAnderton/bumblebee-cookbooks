@@ -16,12 +16,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-group 'www'
+# Install nginx
+include_recipe 'nginx'
 
-user 'www-nginx' do
-  group 'www'
-  system true
-  shell '/bin/bash'
+# Disable existing sites
+if node['bumblebee']['disable_existing_sites']
+  Dir.foreach("#{node['nginx']['dir']}/sites-enabled") do |enabled_site|
+    next if enabled_site == '.' or enabled_site == '..'
+
+    nginx_site enabled_site do
+      enable false
+    end
+  end
 end
 
-include_recipe 'nginx'
+# Create site configs and enable them
+for siteName in node['bumblebee']['sites'] do
+  template "#{node['nginx']['dir']}/sites-available/#{siteName}" do
+    source 'nginx-site-with-php-config.erb'
+    owner 'root'
+    group 'root'
+    mode '0644'
+    variables({
+      :site_name => siteName,
+      :www_root => node['bumblebee']['default_www_root']
+    })
+  end
+
+  nginx_site siteName do
+    enable true
+  end
+end
