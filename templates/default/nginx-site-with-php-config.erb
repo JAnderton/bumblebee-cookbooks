@@ -1,14 +1,22 @@
 server {
-	#listen 443;
+	<% if @site_config['ssl']['enabled'] %>
+	listen 443;
+	<% end %>
 	listen 80;
 
-	server_name <%= @site_name %> *.<%= @site_name %>;
+	server_name <%= @site_config['name'] %> *.<%= @site_config['name'] %>;
 
-	root <%= @www_root %>/<%= @site_name %>;
+	<% if @site_config['ssl']['enabled'] %>
+		ssl on;
+		ssl_certificate <%= @site_config['ssl']['certificate_location'] %>;
+		ssl_certificate_key  <%= @site_config['ssl']['certificate_key_location'] %>;
+
+	<% end %>
+	root <%= @www_root %>/<%= @site_config['name'] %>;
 	index index.php index.html index.htm;
 
-	access_log /home/www-data/logs/<%= @site_name %>/access.log;
-	error_log /home/www-data/logs/<%= @site_name %>/error.log warn;
+	access_log /home/www-data/logs/<%= @site_config['name'] %>/access.log;
+	error_log /home/www-data/logs/<%= @site_config['name'] %>/error.log warn;
 
 	# static file 404 aren't logged, and expire header is set to maximum age
 	location ~* \.(jpg|jpeg|gif|css|png|js|ico|html)$ {

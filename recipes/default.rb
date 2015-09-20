@@ -31,19 +31,19 @@ if node['bumblebee']['disable_existing_sites']
 end
 
 # Create site configs and enable them
-for siteName in node['bumblebee']['sites'] do
-  template "#{node['nginx']['dir']}/sites-available/#{siteName}" do
+for site_config in node['bumblebee']['sites'] do
+  template "#{node['nginx']['dir']}/sites-available/#{site_config['name']}" do
     source 'nginx-site-with-php-config.erb'
     owner 'root'
     group 'root'
     mode '0644'
     variables({
-      :site_name => siteName,
+      :site_config => site_config,
       :www_root => node['bumblebee']['default_www_root']
     })
   end
 
-  nginx_site siteName do
+  nginx_site site_config['name'] do
     enable true
   end
 end
