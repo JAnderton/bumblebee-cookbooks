@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: .
-# Recipe:: default
+# Cookbook Name:: trion-cookbooks
+# Recipe:: deploy_all_sites
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -17,26 +17,6 @@
 # limitations under the License.
 #
 
-# Todo:
-# 1) Modularize this file
-
-# Install nginx
-# include_recipe 'nginx'
-
-# Disable existing sites
-# disable_all_sites
-
-# Installs git
-# git_install
-
-directory node['trion']['default_www_root'] do
-  owner node['nginx']['user']
-  group node['nginx']['group']
-  mode '0755'
-  recursive true
-end
-
-# Create site configs and enable them
 for site_config in node['trion']['sites'] do
   template "#{node['nginx']['dir']}/sites-available/#{site_config['name']}" do
     source 'nginx-site-config.erb'
