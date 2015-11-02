@@ -29,19 +29,6 @@ for site_config in node['trion']['sites'] do
     })
   end
 
-  # Create directory for the source code and put source code there
-  # source_location = "#{node['trion']['source_www_root']}/#{site_config['name']}/#{Time.now.getutc.to_i}"
-  # directory source_location do
-  #   owner node['nginx']['user']
-  #   group node['nginx']['group']
-  #   recursive true
-  # end
-  # git source_location do
-  #   repository site_config['git_location']
-  #   revision "master"
-  #   action :sync
-  # end
-
   git "#{node['trion']['default_www_root']}/#{site_config['name']}" do
     repository site_config['git_location']
     revision "master"
@@ -55,12 +42,6 @@ for site_config in node['trion']['sites'] do
     recursive true
   end
 
-  # Link source code with nginx
-  # link "#{node['trion']['default_www_root']}/#{site_config['name']}" do
-  #   to source_location
-  # end
-
-  # Enable all sites
   nginx_site site_config['name'] do
     enable true
   end
