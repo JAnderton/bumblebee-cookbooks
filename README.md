@@ -1,19 +1,19 @@
-bumblebee-cookbooks
+trion-cookbooks
 ===================
 
-Cookbooks for setting up the bumblebee server to enable continuous delivery
+Cookbooks for setting up the Trion server to enable continuous delivery
 
 Usage
 -----
 
-### bumblebee-cookbooks::default
+### trion-cookbooks::default
 
-Include `bumblebee-cookbooks` in your node's `run_list`:
+Include `trion-cookbooks` in your node's `run_list`:
 
 ```json
 {
   "run_list": [
-    "recipe[bumblebee-cookbooks::default]"
+    "recipe[trion-cookbooks::default]"
   ]
 }
 ```

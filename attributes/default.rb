@@ -1,9 +1,9 @@
 # Script settings
-default['bumblebee']['disable_existing_sites'] = false
-default['bumblebee']['site_name'] = 'example.com'
-default['bumblebee']['default_www_root'] = '/var/www'
-default['bumblebee']['source_www_root'] = '/var/www-source'
-default['bumblebee']['sites'] = [
+default['trion']['disable_existing_sites'] = false
+default['trion']['site_name'] = 'example.com'
+default['trion']['default_www_root'] = '/var/www'
+default['trion']['source_www_root'] = '/var/www-source'
+default['trion']['sites'] = [
   # {name: 'karun.me', ssl: { enabled: false } },
   # {name: 'karunab.com', ssl: { enabled: false } },
   {name: 'japhet.in', ssl: { enabled: false }, git_location: 'https://github.com/JAnderton/japhet-family-website.git' },

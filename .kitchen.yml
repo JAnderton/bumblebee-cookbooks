@@ -13,5 +13,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[bumblebee-cookbooks::default]
+      - recipe[trion-cookbooks::default]
     attributes:

@@ -24,7 +24,7 @@
 include_recipe 'nginx'
 
 # Disable existing sites
-# if node['bumblebee']['disable_existing_sites']
+# if node['trion']['disable_existing_sites']
 #   Dir.foreach("#{node['nginx']['dir']}/sites-enabled") do |enabled_site|
 #     next if enabled_site == '.' or enabled_site == '..'
 #
@@ -39,7 +39,7 @@ git_client 'default' do
   action :install
 end
 
-directory node['bumblebee']['default_www_root'] do
+directory node['trion']['default_www_root'] do
   owner node['nginx']['user']
   group node['nginx']['group']
   mode '0755'
@@ -47,7 +47,7 @@ directory node['bumblebee']['default_www_root'] do
 end
 
 # Create site configs and enable them
-for site_config in node['bumblebee']['sites'] do
+for site_config in node['trion']['sites'] do
   template "#{node['nginx']['dir']}/sites-available/#{site_config['name']}" do
     source 'nginx-site-config.erb'
     owner node['nginx']['user']
@@ -55,12 +55,12 @@ for site_config in node['bumblebee']['sites'] do
     mode '0644'
     variables({
       :site_config => site_config,
-      :www_root => node['bumblebee']['default_www_root']
+      :www_root => node['trion']['default_www_root']
     })
   end
 
   # Create directory for the source code and put source code there
-  # source_location = "#{node['bumblebee']['source_www_root']}/#{site_config['name']}/#{Time.now.getutc.to_i}"
+  # source_location = "#{node['trion']['source_www_root']}/#{site_config['name']}/#{Time.now.getutc.to_i}"
   # directory source_location do
   #   owner node['nginx']['user']
   #   group node['nginx']['group']
@@ -72,7 +72,7 @@ for site_config in node['bumblebee']['sites'] do
   #   action :sync
   # end
 
-  git "#{node['bumblebee']['default_www_root']}/#{site_config['name']}" do
+  git "#{node['trion']['default_www_root']}/#{site_config['name']}" do
     repository site_config['git_location']
     revision "master"
     action :sync
@@ -80,13 +80,13 @@ for site_config in node['bumblebee']['sites'] do
     group node['nginx']['group']
   end
 
-  directory "#{node['bumblebee']['default_www_root']}/#{site_config['name']}" do
+  directory "#{node['trion']['default_www_root']}/#{site_config['name']}" do
     mode '0755'
     recursive true
   end
 
   # Link source code with nginx
-  # link "#{node['bumblebee']['default_www_root']}/#{site_config['name']}" do
+  # link "#{node['trion']['default_www_root']}/#{site_config['name']}" do
   #   to source_location
   # end
 
