@@ -16,26 +16,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# Todo:
+# 1) Modularize this file
+
 # Install nginx
 include_recipe 'nginx'
 
 # Disable existing sites
-if node['bumblebee']['disable_existing_sites']
-  Dir.foreach("#{node['nginx']['dir']}/sites-enabled") do |enabled_site|
-    next if enabled_site == '.' or enabled_site == '..'
+# if node['bumblebee']['disable_existing_sites']
+#   Dir.foreach("#{node['nginx']['dir']}/sites-enabled") do |enabled_site|
+#     next if enabled_site == '.' or enabled_site == '..'
+#
+#     nginx_site enabled_site do
+#       enable false
+#     end
+#   end
+# end
 
-    nginx_site enabled_site do
-      enable false
-    end
-  end
+# Installs git
+git_client 'default' do
+  action :install
+end
+
+directory node['bumblebee']['default_www_root'] do
+  owner node['nginx']['user']
+  group node['nginx']['group']
+  mode '0755'
+  recursive true
 end
 
 # Create site configs and enable them
 for site_config in node['bumblebee']['sites'] do
   template "#{node['nginx']['dir']}/sites-available/#{site_config['name']}" do
-    source 'nginx-site-with-php-config.erb'
-    owner 'root'
-    group 'root'
+    source 'nginx-site-config.erb'
+    owner node['nginx']['user']
+    group node['nginx']['group']
     mode '0644'
     variables({
       :site_config => site_config,
@@ -43,6 +59,38 @@ for site_config in node['bumblebee']['sites'] do
     })
   end
 
+  # Create directory for the source code and put source code there
+  # source_location = "#{node['bumblebee']['source_www_root']}/#{site_config['name']}/#{Time.now.getutc.to_i}"
+  # directory source_location do
+  #   owner node['nginx']['user']
+  #   group node['nginx']['group']
+  #   recursive true
+  # end
+  # git source_location do
+  #   repository site_config['git_location']
+  #   revision "master"
+  #   action :sync
+  # end
+
+  git "#{node['bumblebee']['default_www_root']}/#{site_config['name']}" do
+    repository site_config['git_location']
+    revision "master"
+    action :sync
+    user node['nginx']['user']
+    group node['nginx']['group']
+  end
+
+  directory "#{node['bumblebee']['default_www_root']}/#{site_config['name']}" do
+    mode '0755'
+    recursive true
+  end
+
+  # Link source code with nginx
+  # link "#{node['bumblebee']['default_www_root']}/#{site_config['name']}" do
+  #   to source_location
+  # end
+
+  # Enable all sites
   nginx_site site_config['name'] do
     enable true
   end
