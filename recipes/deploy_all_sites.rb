@@ -21,23 +21,13 @@
 # 1) Modularize this file
 
 # Install nginx
-include_recipe 'nginx'
+# include_recipe 'nginx'
 
 # Disable existing sites
-if node['trion']['disable_existing_sites']
-  Dir.foreach("#{node['nginx']['dir']}/sites-enabled") do |enabled_site|
-    next if enabled_site == '.' or enabled_site == '..'
-
-    nginx_site enabled_site do
-      enable false
-    end
-  end
-end
+# disable_all_sites
 
 # Installs git
-git_client 'default' do
-  action :install
-end
+# git_install
 
 directory node['trion']['default_www_root'] do
   owner node['nginx']['user']
