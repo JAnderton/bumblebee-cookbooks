@@ -1,6 +1,5 @@
 # Script settings
 default['trion']['disable_existing_sites'] = false
-default['trion']['site_name'] = 'example.com'
 default['trion']['default_www_root'] = '/var/www'
 default['trion']['source_www_root'] = '/var/www-source'
 
