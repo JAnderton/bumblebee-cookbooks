@@ -11,4 +11,4 @@ default['trion']['sites']['karunab.com'] = {name: 'karunab.com', ssl: { enabled:
 default['trion']['sites']['prorthymix.com'] = {name: 'prorthymix.com', ssl: { enabled: false } }
 
 # Nginix overrides
-default['nginx']['default_site_enabled'] = false
+# default['nginx']['default_site_enabled'] = false
