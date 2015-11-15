@@ -45,7 +45,7 @@ Commands
 
 #### Bootstrapping
 
-Installs Chef onto target machine, downloads latest cookbooks on the server for your organization and executes them.
+Installs Chef onto target machine, uploads the latest cookbooks from your local machine on the server and executes them.
 
 Pro tip: `bootstrap = init + cook`
 
@@ -75,18 +75,20 @@ kitchen converge
 kitchen verify
 ```
 
+#### Download new cookbook
+
+```sh
+berks install <cookbook-name>
+```
+
 #### Upload cookbooks, roles and data bags to chef server
+
+This isn't required if you're using knife solo. This is required only if you're using a hosted chef server.
 
 ```sh
 berks upload
 knife role from file roles/*.rb
 knife data bag from file --all
-```
-
-#### Download new cookbook
-
-```sh
-berks install <cookbook-name>
 ```
 
 License and Authors
