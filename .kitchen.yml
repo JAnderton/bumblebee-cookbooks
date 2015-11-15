@@ -19,4 +19,6 @@ suites:
       - recipe[trion-cookbooks::setup_www_root]
       - recipe[trion-cookbooks::deploy_japhet_in]
       - recipe[trion-cookbooks::deploy_tributetothebeast_com]
+      # These changes need to be duplicated in roles/webserver.rb for
+      # production deployments using chef solo
     attributes:

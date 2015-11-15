@@ -1,4 +1,6 @@
-# Note: This file isn't required if you're using chef solo
+# These changes need to be duplicated in .kitchen.yml for development
+# deployments using kitchen
+
 name "webserver"
 description "Chef role for all webserver machines"
 

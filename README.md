@@ -9,12 +9,15 @@ Usage
 ### Complete server installation
 
 Execute all recipes from `.kitchen.yml`'s run_list in order.
-- recipe[nginx]
-- recipe[trion-cookbooks::disable_sites]
-- recipe[trion-cookbooks::git_install]
-- recipe[trion-cookbooks::setup_www_root]
-- recipe[trion-cookbooks::deploy_japhet_in]
-- recipe[trion-cookbooks::deploy_tributetothebeast_com]
+This information is currently duplicated in `.kitchen.yml` and `roles/webserver.rb`
+
+This list of recipes currently is as below:
+- `recipe[nginx]`
+- `recipe[trion-cookbooks::disable_sites]`
+- `recipe[trion-cookbooks::git_install]`
+- `recipe[trion-cookbooks::setup_www_root]`
+- `recipe[trion-cookbooks::deploy_japhet_in]`
+- `recipe[trion-cookbooks::deploy_tributetothebeast_com]`
 
 ### What do individual scripts do?
 
