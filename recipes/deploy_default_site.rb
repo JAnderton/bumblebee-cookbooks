@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: setup_www_root
+# Recipe:: deploy_default_site
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -17,18 +17,14 @@
 # limitations under the License.
 #
 
-directory node['trion']['default_www_root'] do
-  owner node['nginx']['user']
-  group node['nginx']['group']
-  mode '0755'
-  recursive false
-end
-
 if node['nginx']['default_site_enabled'] then
-  directory node['nginx']['default_root'] do
+  template "#{node['nginx']['default_root']}/index.html" do
+    source 'default-site.erb'
     owner node['nginx']['user']
     group node['nginx']['group']
-    mode '0755'
-    recursive false
+    mode '0644'
+    variables({
+      :server_name => node['trion']['server_name'],
+    })
   end
 end

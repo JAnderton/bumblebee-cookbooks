@@ -9,6 +9,7 @@ run_list(
   "recipe[trion-cookbooks::disable_sites]",
   "recipe[trion-cookbooks::git_install]",
   "recipe[trion-cookbooks::setup_www_root]",
+  "recipe[trion-cookbooks::deploy_default_site]",
   "recipe[trion-cookbooks::deploy_japhet_in]",
   "recipe[trion-cookbooks::deploy_tributetothebeast_com]",
 )

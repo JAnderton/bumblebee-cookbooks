@@ -12,3 +12,7 @@ default['trion']['sites']['prorthymix.com'] = {name: 'prorthymix.com', ssl: { en
 
 # Nginix overrides
 # default['nginx']['default_site_enabled'] = false
+default['nginx']['default_root'] = '/var/www/default-site'
+
+# Server settings
+default['trion']['server_name'] = 'Cybershark'
