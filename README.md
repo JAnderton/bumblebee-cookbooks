@@ -38,12 +38,6 @@ knife data bag from file --all
 ### Download new cookbook
 
 ```
-knife install <cookbook-name>
-```
-
-### Download new cookbook
-
-```
 berks install <cookbook-name>
 ```
 
