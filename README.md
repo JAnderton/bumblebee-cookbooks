@@ -13,8 +13,9 @@ This information is currently duplicated in `.kitchen.yml` and `roles/webserver.
 
 This list of recipes currently is as below:
 - `recipe[nginx]`
+- `recipe[hostname]`
+- `recipe[git]`
 - `recipe[trion-cookbooks::disable_sites]`
-- `recipe[trion-cookbooks::git_install]`
 - `recipe[trion-cookbooks::setup_www_root]`
 - `recipe[trion-cookbooks::deploy_default_site]`
 - `recipe[trion-cookbooks::deploy_japhet_in]`

@@ -16,3 +16,4 @@ default['nginx']['default_root'] = '/var/www/default-site'
 
 # Server settings
 default['trion']['server_name'] = 'Cybershark'
+default['set_fqdn'] = 'Cybershark.trion'

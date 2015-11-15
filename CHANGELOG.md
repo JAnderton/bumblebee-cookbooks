@@ -17,4 +17,12 @@ Modularized static HTML site deployment and deployed [tributetothebeast.com](htt
 # 0.3.0
 
 Added default site with server name and an image to the server on the default page.
+
+# 0.3.1
+
 Added [prorthymix.com](https://prorthymix.com) to the deployment code.
+
+# 0.3.2
+
+Sets server name to client machine
+Uses generic git install script instead of a custom one
