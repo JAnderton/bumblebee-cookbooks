@@ -13,3 +13,7 @@ Modularized [japhet.in](https://japhet.in) deployment code
 # 0.2.0
 
 Modularized static HTML site deployment and deployed [tributetothebeast.com](https://tributetothebeast.com)
+
+# 0.3.0
+
+Added default site with server name and an image to the server on the default page.
