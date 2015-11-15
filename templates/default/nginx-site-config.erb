@@ -1,4 +1,9 @@
 server {
+    server_name *.<%= @site_config['name'] %>;
+    rewrite ^(.*) http://<%= @site_config['name'] %>$1 permanent;
+}
+
+server {
 	<% if @site_config['ssl']['enabled'] %>
 	listen 443;
 	<% end %>
