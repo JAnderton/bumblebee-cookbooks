@@ -6,28 +6,76 @@ Cookbooks for setting up the Trion server to enable continuous delivery
 Usage
 -----
 
-### trion-cookbooks::default
+### Complete server installation
 
-Include `trion-cookbooks` in your node's `run_list`:
+Execute all recipes from `.kitchen.yml`'s run_list in order.
+- recipe[nginx]
+- recipe[trion-cookbooks::disable_sites]
+- recipe[trion-cookbooks::git_install]
+- recipe[trion-cookbooks::setup_www_root]
+- recipe[trion-cookbooks::deploy_japhet_in]
+- recipe[trion-cookbooks::deploy_tributetothebeast_com]
 
-```json
-{
-  "run_list": [
-    "recipe[trion-cookbooks::default]"
-  ]
-}
-```
+### What do individual scripts do?
+
+#### trion-cookbooks::disable_sites
+
+Disables all nginx websites on the server
+
+#### trion-cookbooks::git_install
+
+Installs git. Will probably be removed and [the git cookbook](https://supermarket.chef.io/cookbooks/git) will be used in the future.
+
+#### trion-cookbooks::setup_www_root
+
+Sets up the default www root for nginx where all websites can be deployed
+
+#### trion-cookbooks::deploy_japhet_in
+
+Deploys [japhet.in](https://japhet.in)
+
+#### trion-cookbooks::deploy_tributetothebeast_com
+
+Deploys [tributetothebeast.com](https://tributetothebeast.com)
 
 Commands
 --------
 
-### Bootstrapping
+### Deployment
+
+#### Bootstrapping
+
+Installs Chef onto target machine, downloads latest cookbooks on the server for your organization and executes them.
+
+Pro tip: `bootstrap = init + cook`
 
 ```sh
-knife bootstrap localhost:2222 --ssh-user vagrant --ssh-password 'vagrant' --sudo --use-sudo-password --run-list=role[webserver]
+knife solo bootstrap <server_address>
 ```
 
-### Update cookbooks, roles and data bags
+#### Cooking
+
+Downloads latest cookbooks on the server for your organization and executes them.
+
+```sh
+knife solo cook <server_address>
+```
+
+### Development
+
+#### Running cookbooks on vagrant
+
+```sh
+kitchen converge
+```
+
+#### Running automated tests
+
+```sh
+kitchen verify
+```
+
+#### Upload cookbooks, roles and data bags to chef server
 
 ```sh
 berks upload
@@ -35,7 +83,7 @@ knife role from file roles/*.rb
 knife data bag from file --all
 ```
 
-### Download new cookbook
+#### Download new cookbook
 
 ```sh
 berks install <cookbook-name>
