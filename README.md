@@ -19,6 +19,7 @@ This list of recipes currently is as below:
 - `recipe[trion-cookbooks::deploy_default_site]`
 - `recipe[trion-cookbooks::deploy_japhet_in]`
 - `recipe[trion-cookbooks::deploy_tributetothebeast_com]`
+- `recipe[trion-cookbooks::deploy_prorthymix_com]`
 
 ### What do individual scripts do?
 
