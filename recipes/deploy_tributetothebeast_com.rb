@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: deploy_japhet_in
+# Recipe:: deploy_tributetothebeast_com
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -18,4 +18,4 @@
 #
 require_relative 'deploy_html_site'
 
-deploy_html_site('japhet.in')
+deploy_html_site('tributetothebeast.com')
