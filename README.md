@@ -23,13 +23,13 @@ Commands
 
 ### Bootstrapping
 
-```
+```sh
 knife bootstrap localhost:2222 --ssh-user vagrant --ssh-password 'vagrant' --sudo --use-sudo-password --run-list=role[webserver]
 ```
 
 ### Update cookbooks, roles and data bags
 
-```
+```sh
 berks upload
 knife role from file roles/*.rb
 knife data bag from file --all
@@ -37,7 +37,7 @@ knife data bag from file --all
 
 ### Download new cookbook
 
-```
+```sh
 berks install <cookbook-name>
 ```
 
