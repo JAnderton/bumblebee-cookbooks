@@ -16,6 +16,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-require_relative 'deploy_html_site'
 
-deploy_html_site('tributetothebeast.com')
+deploy_html_site 'tributetothebeast.com'

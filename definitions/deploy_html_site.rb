@@ -21,32 +21,32 @@
 # limitations under the License.
 #
 
-def deploy_html_site(site_name)
-  template "#{node['nginx']['dir']}/sites-available/#{node['trion']['sites'][site_name]['name']}" do
+define :deploy_html_site do
+  template "#{node['nginx']['dir']}/sites-available/#{node['trion']['sites'][params[:name]]['name']}" do
     source 'nginx-site-config.erb'
     owner node['nginx']['user']
     group node['nginx']['group']
     mode '0644'
     variables({
-      :site_config => node['trion']['sites'][site_name],
+      :site_config => node['trion']['sites'][params[:name]],
       :www_root => node['trion']['default_www_root']
     })
   end
 
-  git "#{node['trion']['default_www_root']}/#{node['trion']['sites'][site_name]['name']}" do
-    repository node['trion']['sites'][site_name]['git_location']
+  git "#{node['trion']['default_www_root']}/#{node['trion']['sites'][params[:name]]['name']}" do
+    repository node['trion']['sites'][params[:name]]['git_location']
     revision "master"
     action :sync
     user node['nginx']['user']
     group node['nginx']['group']
   end
 
-  directory "#{node['trion']['default_www_root']}/#{node['trion']['sites'][site_name]['name']}" do
+  directory "#{node['trion']['default_www_root']}/#{node['trion']['sites'][params[:name]]['name']}" do
     mode '0755'
     recursive true
   end
 
-  nginx_site node['trion']['sites'][site_name]['name'] do
+  nginx_site node['trion']['sites'][params[:name]]['name'] do
     enable true
   end
 end
