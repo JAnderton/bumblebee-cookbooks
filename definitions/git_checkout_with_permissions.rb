@@ -4,7 +4,7 @@
 # website.
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: deploy_html_site
+# Recipe:: git_checkout_with_permissions
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -21,12 +21,17 @@
 # limitations under the License.
 #
 
-define :deploy_html_site do
-  create_nginx_site_config params[:name]
+define :git_checkout_with_permissions do
+  git "#{node['trion']['default_www_root']}/#{node['trion']['sites'][params[:name]]['name']}" do
+    repository node['trion']['sites'][params[:name]]['git_location']
+    revision "master"
+    action :sync
+    user node['nginx']['user']
+    group node['nginx']['group']
+  end
 
-  git_checkout_with_permissions params[:name]
-
-  nginx_site node['trion']['sites'][params[:name]]['name'] do
-    enable true
+  directory "#{node['trion']['default_www_root']}/#{node['trion']['sites'][params[:name]]['name']}" do
+    mode '0755'
+    recursive true
   end
 end
