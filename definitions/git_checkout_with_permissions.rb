@@ -21,8 +21,8 @@
 # limitations under the License.
 #
 
-define :git_checkout_with_permissions do
-  git "#{node['trion']['default_www_root']}/#{node['trion']['sites'][params[:name]]['name']}" do
+define :git_checkout_with_permissions, :www_root => nil do
+  git "#{params[:www_root]}/#{node['trion']['sites'][params[:name]]['name']}" do
     repository node['trion']['sites'][params[:name]]['git_location']
     revision "master"
     action :sync
@@ -30,7 +30,7 @@ define :git_checkout_with_permissions do
     group node['nginx']['group']
   end
 
-  directory "#{node['trion']['default_www_root']}/#{node['trion']['sites'][params[:name]]['name']}" do
+  directory "#{params[:www_root]}/#{node['trion']['sites'][params[:name]]['name']}" do
     mode '0755'
     recursive true
   end

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: setup_www_root
+# Recipe:: install_octopress
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -17,25 +17,6 @@
 # limitations under the License.
 #
 
-directory node['trion']['default_www_root'] do
-  owner node['nginx']['user']
-  group node['nginx']['group']
-  mode '0755'
-  recursive false
-end
-
-directory node['trion']['source_www_root'] do
-  owner node['nginx']['user']
-  group node['nginx']['group']
-  mode '0755'
-  recursive false
-end
-
-if node['nginx']['default_site_enabled'] then
-  directory node['nginx']['default_root'] do
-    owner node['nginx']['user']
-    group node['nginx']['group']
-    mode '0755'
-    recursive false
-  end
+gem_package 'octopress' do
+  action :install
 end

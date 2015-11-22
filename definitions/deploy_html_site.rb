@@ -24,7 +24,9 @@
 define :deploy_html_site do
   create_nginx_site_config params[:name]
 
-  git_checkout_with_permissions params[:name]
+  git_checkout_with_permissions params[:name] do
+    www_root "#{node['trion']['default_www_root']}"
+  end
 
   nginx_site node['trion']['sites'][params[:name]]['name'] do
     enable true
