@@ -28,13 +28,14 @@ This list of recipes currently is as below:
 
 Disables all nginx websites on the server
 
-#### trion-cookbooks::git_install
+#### trion-cookbooks::install_octopress
 
-Installs git. Will probably be removed and [the git cookbook](https://supermarket.chef.io/cookbooks/git) will be used in the future.
+Installs Octopress. Needs to be extracted to create a module.
 
 #### trion-cookbooks::setup_www_root
 
-Sets up the default www root for nginx where all websites can be deployed
+Sets up the default www root for nginx where all websites can be deployed and
+sets up the www source directory where source code can be put for compilation
 
 #### trion-cookbooks::deploy_japhet_in
 
@@ -43,6 +44,10 @@ Deploys [japhet.in](https://japhet.in)
 #### trion-cookbooks::deploy_tributetothebeast_com
 
 Deploys [tributetothebeast.com](https://tributetothebeast.com)
+
+#### trion-cookbooks::deploy_blog_karun_me
+
+Deploys [blog.karun.me](https://blog.karun.me)
 
 Commands
 --------
