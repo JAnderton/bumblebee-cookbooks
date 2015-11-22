@@ -27,7 +27,7 @@ Added [prorthymix.com](https://prorthymix.com) to the deployment code.
 Sets server name to client machine
 Uses generic git install script instead of a custom one
 
-# 0.3.3 (ongoing)
+# 0.3.3
 
 Bound cookbook to chef omnibus 12.5.1
 Providing git_checkout_with_permissions, create_nginx_config and deploy_html_site as definitions
