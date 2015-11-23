@@ -4,7 +4,7 @@
 # website.
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: deploy_html_site
+# Recipe:: create_redirect_config
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -21,14 +21,15 @@
 # limitations under the License.
 #
 
-define :deploy_html_site do
-  create_site_config params[:name]
-
-  git_checkout_with_permissions params[:name] do
-    www_root "#{node['trion']['default_www_root']}"
-  end
-
-  nginx_site node['trion']['sites'][params[:name]]['name'] do
-    enable true
+define :create_redirect_config do
+  template "#{node['nginx']['dir']}/sites-available/#{node['trion']['sites'][params[:name]]['name']}" do
+    source 'nginx-redirect-config.erb'
+    owner node['nginx']['user']
+    group node['nginx']['group']
+    mode '0644'
+    variables({
+      :site_config => node['trion']['sites'][params[:name]],
+      :www_root => node['trion']['default_www_root']
+    })
   end
 end

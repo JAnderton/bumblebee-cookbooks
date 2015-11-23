@@ -51,7 +51,7 @@ execute "octopress deploy on #{site_name}" do
   group node['nginx']['group']
 end
 
-create_nginx_site_config site_name
+create_site_config site_name
 
 nginx_site node['trion']['sites'][site_name]['name'] do
   enable true

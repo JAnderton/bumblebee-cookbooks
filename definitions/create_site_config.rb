@@ -4,7 +4,7 @@
 # website.
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: create_nginx_site_config
+# Recipe:: create_site_config
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -21,7 +21,7 @@
 # limitations under the License.
 #
 
-define :create_nginx_site_config do
+define :create_site_config do
   template "#{node['nginx']['dir']}/sites-available/#{node['trion']['sites'][params[:name]]['name']}" do
     source 'nginx-site-config.erb'
     owner node['nginx']['user']
