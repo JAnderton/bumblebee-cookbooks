@@ -1,6 +1,6 @@
 server {
-    server_name *.<%= @site_config['name'] %>;
-    rewrite ^(.*) http://<%= @site_config['name'] %>$1 permanent;
+   server_name "~^(?!www.).*" ;
+   return 301 $scheme://www.$host$request_uri;
 }
 
 server {

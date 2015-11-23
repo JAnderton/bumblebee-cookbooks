@@ -33,3 +33,7 @@ Bound cookbook to chef omnibus 12.5.1
 Providing git_checkout_with_permissions, create_nginx_config and deploy_html_site as definitions
 Installed octopress
 Deployed [blog.karun.me](https://blog.karun.me)
+
+# 0.3.4 (Under Development)
+
+Setting up redirects from www.websitename.tld to websitename.tld
