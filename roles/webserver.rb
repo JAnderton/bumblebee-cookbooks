@@ -14,6 +14,7 @@ run_list(
   "recipe[trion-cookbooks::deploy_japhet_in]",
   "recipe[trion-cookbooks::deploy_tributetothebeast_com]",
   "recipe[trion-cookbooks::deploy_prorthymix_com]",
+  "recipe[build-essential]",
   "recipe[trion-cookbooks::install_octopress]",
   "recipe[nodejs]",
   "recipe[trion-cookbooks::deploy_blog_karun_me]"
