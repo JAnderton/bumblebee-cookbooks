@@ -37,3 +37,4 @@ Deployed [blog.karun.me](https://blog.karun.me)
 # 0.3.4 (Under Development)
 
 Setting up redirects from www.websitename.tld to websitename.tld
+Deployed [karunab.com](https://karunab.com)

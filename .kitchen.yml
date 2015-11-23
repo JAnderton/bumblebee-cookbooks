@@ -27,6 +27,7 @@ suites:
       - recipe[trion-cookbooks::install_octopress]
       - recipe[nodejs]
       - recipe[trion-cookbooks::deploy_blog_karun_me]
+      - recipe[trion-cookbooks::deploy_karunab_com]
       # These changes need to be duplicated in roles/webserver.rb for
       # production deployments using chef solo
     attributes:

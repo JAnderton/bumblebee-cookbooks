@@ -17,5 +17,6 @@ run_list(
   "recipe[build-essential]",
   "recipe[trion-cookbooks::install_octopress]",
   "recipe[nodejs]",
-  "recipe[trion-cookbooks::deploy_blog_karun_me]"
+  "recipe[trion-cookbooks::deploy_blog_karun_me]",
+  "recipe[trion-cookbooks::deploy_karunab_com]"
 )
