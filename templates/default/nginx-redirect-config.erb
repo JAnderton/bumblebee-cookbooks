@@ -1,4 +1,9 @@
 server {
    server_name "<%= @site_config['name'] %>" ;
-   return 301 $scheme://<%= @site_config['redir_url'] %>$request_uri;
+   return 301 $scheme://<%= @site_config['redir_url'] %>;
+}
+
+server {
+   server_name "www.<%= @site_config['name'] %>" ;
+   return 301 $scheme://<%= @site_config['redir_url'] %>;
 }

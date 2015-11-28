@@ -38,3 +38,8 @@ Deployed [blog.karun.me](https://blog.karun.me)
 
 Setting up redirects from www.websitename.tld to websitename.tld
 Deployed [karunab.com](https://karunab.com)
+git_checkout_with_permissions has changed it's primary parameter from www_root to checkout_root
+
+# 0.3.5 (Future Development)
+
+Optimize octopress builds only if required
