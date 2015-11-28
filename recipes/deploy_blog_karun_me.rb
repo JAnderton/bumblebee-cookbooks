@@ -23,7 +23,7 @@ compiled_location = node['trion']['default_www_root'] + "/" + site_name
 deploy_config_already_exists = ::File.directory?(source_location + "/_deploy.yml")
 
 git_checkout_with_permissions site_name do
-  www_root "#{node['trion']['source_www_root']}"
+  checkout_root "#{node['trion']['source_www_root']}"
 end
 
 execute "installing bundle dependencies for #{site_name}" do
