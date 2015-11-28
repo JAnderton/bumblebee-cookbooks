@@ -44,4 +44,4 @@ Deployed [karun.me](https://karun.me)
 # 0.3.5  (Under Development)
 
 Move from definitions to resources
-(TBI) Config drives version to be checked out on deployment
+Config drives version to be checked out on deployment

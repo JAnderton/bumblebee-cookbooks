@@ -19,11 +19,12 @@
 
 property :site_name, String, name_property: true
 property :checkout_root, String, required: true
+property :version, String, default: "master"
 
 action :create do
   git "#{checkout_root}/#{node['trion']['sites'][site_name]['name']}" do
     repository node['trion']['sites'][site_name]['git_location']
-    revision "master"
+    revision version
     action :sync
     user node['nginx']['user']
     group node['nginx']['group']
