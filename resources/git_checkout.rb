@@ -23,7 +23,7 @@ property :version, String, default: "master"
 
 action :create do
   git "#{checkout_root}/#{node['trion']['sites'][site_name]['name']}" do
-    repository node['trion']['sites'][site_name]['git_location']
+    repository node['trion']['sites'][site_name]['git']['location']
     revision version
     action :sync
     user node['nginx']['user']
