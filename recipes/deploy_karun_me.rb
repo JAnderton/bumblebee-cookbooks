@@ -17,4 +17,6 @@
 # limitations under the License.
 #
 
-deploy_html_site 'karun.me'
+trion_deploy 'karun.me' do
+  action :html
+end

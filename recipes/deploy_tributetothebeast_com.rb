@@ -17,4 +17,6 @@
 # limitations under the License.
 #
 
-deploy_html_site 'tributetothebeast.com'
+trion_deploy 'tributetothebeast.com' do
+  action :html
+end

@@ -17,4 +17,6 @@
 # limitations under the License.
 #
 
-deploy_html_site 'japhet.in'
+trion_deploy 'japhet.in' do
+  action :html
+end

@@ -34,13 +34,14 @@ Providing git_checkout_with_permissions, create_nginx_config and deploy_html_sit
 Installed octopress
 Deployed [blog.karun.me](https://blog.karun.me)
 
-# 0.3.4 (Under Development)
+# 0.3.4
 
 Setting up redirects from www.websitename.tld to websitename.tld
 Deployed [karunab.com](https://karunab.com)
 git_checkout_with_permissions has changed it's primary parameter from www_root to checkout_root
 Deployed [karun.me](https://karun.me)
 
-# 0.3.5 (Future Development)
+# 0.3.5  (Under Development)
 
-Optimize octopress builds only if required
+Move from definitions to resources
+(TBI) Config drives version to be checked out on deployment

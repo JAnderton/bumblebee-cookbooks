@@ -1,10 +1,6 @@
 #
-# This file is not a directly invokable recipe. It is a function call that is
-# meant to be invoked from other recipies that want to deploy a simple html
-# website.
-#
 # Cookbook Name:: trion-cookbooks
-# Definition:: create_redirect_config
+# Resource:: deploy_site
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -21,15 +17,37 @@
 # limitations under the License.
 #
 
-define :create_redirect_config do
-  template "#{node['nginx']['dir']}/sites-available/#{node['trion']['sites'][params[:name]]['name']}" do
-    source 'nginx-redirect-config.erb'
-    owner node['nginx']['user']
-    group node['nginx']['group']
-    mode '0644'
-    variables({
-      :site_config => node['trion']['sites'][params[:name]],
-      :www_root => node['trion']['default_www_root']
-    })
+property :site_name, String, name_property: true
+
+action :html do
+  trion_webserver_config site_name do
+    action :create_site
+  end
+
+  trion_git_checkout site_name do
+    checkout_root node['trion']['default_www_root']
+    action :create
+  end
+
+  nginx_site node['trion']['sites'][site_name]['name'] do
+    enable true
+  end
+
+  service 'nginx' do
+    action [:reload]
+  end
+end
+
+action :redirect do
+  trion_webserver_config site_name do
+    action :create_redirect
+  end
+
+  nginx_site node['trion']['sites'][site_name]['name'] do
+    enable true
+  end
+
+  service 'nginx' do
+    action [:reload]
   end
 end

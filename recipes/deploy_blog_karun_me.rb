@@ -22,7 +22,7 @@ source_location = node['trion']['source_www_root'] + "/" + site_name
 compiled_location = node['trion']['default_www_root'] + "/" + site_name
 deploy_config_already_exists = ::File.directory?(source_location + "/_deploy.yml")
 
-git_checkout_with_permissions site_name do
+trion_git_checkout site_name do
   checkout_root "#{node['trion']['source_www_root']}"
 end
 
@@ -51,7 +51,7 @@ execute "octopress deploy on #{site_name}" do
   group node['nginx']['group']
 end
 
-create_site_config site_name
+trion_webserver_config site_name
 
 nginx_site node['trion']['sites'][site_name]['name'] do
   enable true

@@ -12,42 +12,35 @@ Execute all recipes from `.kitchen.yml`'s run_list in order.
 This information is currently duplicated in `.kitchen.yml` and `roles/webserver.rb`
 
 This list of recipes currently is as below:
-- `recipe[nginx]`
-- `recipe[hostname]`
-- `recipe[git]`
-- `recipe[trion-cookbooks::disable_sites]`
-- `recipe[trion-cookbooks::setup_www_root]`
-- `recipe[trion-cookbooks::deploy_default_site]`
-- `recipe[trion-cookbooks::deploy_japhet_in]`
-- `recipe[trion-cookbooks::deploy_tributetothebeast_com]`
-- `recipe[trion-cookbooks::deploy_prorthymix_com]`
+- `recipe[trion::disable_sites]`
+- `recipe[trion::setup_www_root]`
+- `recipe[trion::deploy_default_site]`
+- `recipe[trion::deploy_japhet_in]`
+- `recipe[trion::deploy_tributetothebeast_com]`
+- `recipe[trion::deploy_prorthymix_com]`
+- `recipe[trion::install_octopress]`
+- `recipe[trion::deploy_blog_karun_me]`
+- `recipe[trion::deploy_karunab_com]`
+- `recipe[trion::deploy_karun_me]`
 
 ### What do individual scripts do?
 
-#### trion-cookbooks::disable_sites
+#### trion::disable_sites
 
 Disables all nginx websites on the server
 
-#### trion-cookbooks::install_octopress
+#### trion::install_octopress
 
 Installs Octopress. Needs to be extracted to create a module.
 
-#### trion-cookbooks::setup_www_root
+#### trion::setup_www_root
 
 Sets up the default www root for nginx where all websites can be deployed and
-sets up the www source directory where source code can be put for compilation
+Sets up the www source directory where source code can be put for compilation
 
-#### trion-cookbooks::deploy_japhet_in
+#### trion::deploy_*
 
-Deploys [japhet.in](https://japhet.in)
-
-#### trion-cookbooks::deploy_tributetothebeast_com
-
-Deploys [tributetothebeast.com](https://tributetothebeast.com)
-
-#### trion-cookbooks::deploy_blog_karun_me
-
-Deploys [blog.karun.me](https://blog.karun.me)
+Deploys a website (as per the name of the cookbook)
 
 Commands
 --------

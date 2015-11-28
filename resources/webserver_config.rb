@@ -1,10 +1,6 @@
 #
-# This file is not a directly invokable recipe. It is a function call that is
-# meant to be invoked from other recipies that want to deploy a simple html
-# website.
-#
 # Cookbook Name:: trion-cookbooks
-# Definition:: create_site_config
+# Resource:: webserver_config
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -21,14 +17,29 @@
 # limitations under the License.
 #
 
-define :create_site_config do
-  template "#{node['nginx']['dir']}/sites-available/#{node['trion']['sites'][params[:name]]['name']}" do
+property :site_name, String, name_property: true
+
+action :create_site do
+  template "#{node['nginx']['dir']}/sites-available/#{node['trion']['sites'][site_name]['name']}" do
     source 'nginx-site-config.erb'
     owner node['nginx']['user']
     group node['nginx']['group']
     mode '0644'
     variables({
-      :site_config => node['trion']['sites'][params[:name]],
+      :site_config => node['trion']['sites'][site_name],
+      :www_root => node['trion']['default_www_root']
+    })
+  end
+end
+
+action :create_redirect do
+  template "#{node['nginx']['dir']}/sites-available/#{node['trion']['sites'][site_name]['name']}" do
+    source 'nginx-redirect-config.erb'
+    owner node['nginx']['user']
+    group node['nginx']['group']
+    mode '0644'
+    variables({
+      :site_config => node['trion']['sites'][site_name],
       :www_root => node['trion']['default_www_root']
     })
   end

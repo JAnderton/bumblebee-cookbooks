@@ -17,4 +17,6 @@
 # limitations under the License.
 #
 
-deploy_redirect_site 'karunab.com'
+trion_deploy 'karunab.com' do
+  action :redirect
+end

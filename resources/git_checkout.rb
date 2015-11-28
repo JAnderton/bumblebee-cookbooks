@@ -1,10 +1,6 @@
 #
-# This file is not a directly invokable recipe. It is a function call that is
-# meant to be invoked from other recipies that want to deploy a simple html
-# website.
-#
 # Cookbook Name:: trion-cookbooks
-# Definition:: deploy_redirect_site
+# Resource:: git_checkout
 #
 # Copyright (C) 2015 Karun Japhet
 #
@@ -21,10 +17,20 @@
 # limitations under the License.
 #
 
-define :deploy_redirect_site do
-  create_redirect_config params[:name]
+property :site_name, String, name_property: true
+property :checkout_root, String, required: true
 
-  nginx_site node['trion']['sites'][params[:name]]['name'] do
-    enable true
+action :create do
+  git "#{checkout_root}/#{node['trion']['sites'][site_name]['name']}" do
+    repository node['trion']['sites'][site_name]['git_location']
+    revision "master"
+    action :sync
+    user node['nginx']['user']
+    group node['nginx']['group']
+  end
+
+  directory "#{checkout_root}/#{node['trion']['sites'][site_name]['name']}" do
+    mode '0755'
+    recursive true
   end
 end

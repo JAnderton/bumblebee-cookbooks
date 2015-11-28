@@ -7,17 +7,17 @@ description "Chef role for all webserver machines"
 run_list(
   "recipe[hostname]",
   "recipe[nginx]",
-  "recipe[trion-cookbooks::disable_sites]",
-  "recipe[trion-cookbooks::setup_www_root]",
+  "recipe[trion::disable_sites]",
+  "recipe[trion::setup_www_root]",
   "recipe[git]",
-  "recipe[trion-cookbooks::deploy_default_site]",
-  "recipe[trion-cookbooks::deploy_japhet_in]",
-  "recipe[trion-cookbooks::deploy_tributetothebeast_com]",
-  "recipe[trion-cookbooks::deploy_prorthymix_com]",
+  "recipe[trion::deploy_default_site]",
+  "recipe[trion::deploy_japhet_in]",
+  "recipe[trion::deploy_tributetothebeast_com]",
+  "recipe[trion::deploy_prorthymix_com]",
   "recipe[build-essential]",
-  "recipe[trion-cookbooks::install_octopress]",
+  "recipe[trion::install_octopress]",
   "recipe[nodejs]",
-  "recipe[trion-cookbooks::deploy_blog_karun_me]",
-  "recipe[trion-cookbooks::deploy_karunab_com]",
-  "recipe[trion-cookbooks::deploy_karun_me]"
+  "recipe[trion::deploy_blog_karun_me]",
+  "recipe[trion::deploy_karunab_com]",
+  "recipe[trion::deploy_karun_me]"
 )

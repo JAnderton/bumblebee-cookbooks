@@ -17,4 +17,6 @@
 # limitations under the License.
 #
 
-deploy_html_site 'prorthymix.com'
+trion_deploy 'prorthymix.com' do
+  action :html
+end
