@@ -4,7 +4,7 @@
 # website.
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: create_redirect_config
+# Definition:: create_redirect_config
 #
 # Copyright (C) 2015 Karun Japhet
 #

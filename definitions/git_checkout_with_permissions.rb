@@ -4,7 +4,7 @@
 # website.
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: git_checkout_with_permissions
+# Definition:: git_checkout_with_permissions
 #
 # Copyright (C) 2015 Karun Japhet
 #

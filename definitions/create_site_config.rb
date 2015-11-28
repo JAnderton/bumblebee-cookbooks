@@ -4,7 +4,7 @@
 # website.
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: create_site_config
+# Definition:: create_site_config
 #
 # Copyright (C) 2015 Karun Japhet
 #

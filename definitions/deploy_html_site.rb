@@ -4,7 +4,7 @@
 # website.
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: deploy_html_site
+# Definition:: deploy_html_site
 #
 # Copyright (C) 2015 Karun Japhet
 #
