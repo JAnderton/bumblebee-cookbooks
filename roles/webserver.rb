@@ -18,5 +18,6 @@ run_list(
   "recipe[trion-cookbooks::install_octopress]",
   "recipe[nodejs]",
   "recipe[trion-cookbooks::deploy_blog_karun_me]",
-  "recipe[trion-cookbooks::deploy_karunab_com]"
+  "recipe[trion-cookbooks::deploy_karunab_com]",
+  "recipe[trion-cookbooks::deploy_karun_me]"
 )
