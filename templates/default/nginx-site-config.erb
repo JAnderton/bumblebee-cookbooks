@@ -24,8 +24,8 @@ server {
 	ssl_certificate <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/fullchain.pem;
 
 	<% end %>
-	error_log /var/log/nginx/<%= @site_config['name'] %>/error.log;
-	access_log /var/log/nginx/<%= @site_config['name'] %>/access.log;
+	error_log <%= node['nginx']['log_dir'] %>/<%= @site_config['name'] %>/error.log;
+	access_log <%= node['nginx']['log_dir'] %>/<%= @site_config['name'] %>/access.log;
 
 	root <%= @www_root %>/<%= @site_config['name'] %>;
 	index index.html index.htm;
