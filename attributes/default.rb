@@ -47,6 +47,10 @@ default['trion']['sites']['karunab.com'] = {
   name: 'karunab.com',
   redir_url: 'blog.karun.me'
 }
+default['trion']['sites']['karun.japhet.in'] = {
+  name: 'karun.japhet.in',
+  redir_url: 'karun.me'
+}
 default['trion']['sites']['karun.me'] = {
   name: 'karun.me',
   ssl_enabled: false,

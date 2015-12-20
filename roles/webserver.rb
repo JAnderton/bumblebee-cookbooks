@@ -19,5 +19,6 @@ run_list(
   "recipe[nodejs]",
   "recipe[trion::deploy_blog_karun_me]",
   "recipe[trion::deploy_karunab_com]",
-  "recipe[trion::deploy_karun_me]"
+  "recipe[trion::deploy_karun_me]",
+  "recipe[trion::deploy_karun_japhet_in]"
 )
