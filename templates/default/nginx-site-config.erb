@@ -4,19 +4,29 @@ server {
 }
 
 server {
-	<% if @site_config['ssl']['enabled'] %>
+	<% if @site_config['ssl_enabled'] %>
 	listen 443;
 	<% end %>
 	listen 80;
 
 	server_name <%= @site_config['name'] %>;
 
-	<% if @site_config['ssl']['enabled'] %>
-		ssl on;
-		ssl_certificate <%= @site_config['ssl']['certificate_location'] %>;
-		ssl_certificate_key  <%= @site_config['ssl']['certificate_key_location'] %>;
+	<% if @site_config['ssl_enabled'] %>
+	if ($scheme != "https") {
+		return 301 https://$host$request_uri;
+	}
+
+	ssl_stapling_verify on;
+	ssl_stapling on;
+	ssl_trusted_certificate <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/chain.pem;
+	include <%= node['trion']['ssl']['nginx_options_config'] %>;
+	ssl_certificate_key <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/privkey.pem;
+	ssl_certificate <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/fullchain.pem;
 
 	<% end %>
+	error_log /var/log/nginx/<%= @site_config['name'] %>/error.log;
+	access_log /var/log/nginx/<%= @site_config['name'] %>/access.log;
+
 	root <%= @www_root %>/<%= @site_config['name'] %>;
 	index index.html index.htm;
 
