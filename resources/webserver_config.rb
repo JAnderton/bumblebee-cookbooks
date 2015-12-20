@@ -21,7 +21,11 @@ property :site_name, String, name_property: true
 
 action :create_site do
   template "#{node['nginx']['dir']}/sites-available/#{node['trion']['sites'][site_name]['name']}" do
-    source 'nginx-site-config.erb'
+    if node['trion']['sites'][site_name]['ssl_enabled'] then
+      source 'nginx-https-site-config.erb'
+    else
+      source 'nginx-http-site-config.erb'
+    end
     owner node['nginx']['user']
     group node['nginx']['group']
     mode '0644'

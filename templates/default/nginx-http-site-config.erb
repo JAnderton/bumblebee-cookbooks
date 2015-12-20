@@ -1,0 +1,19 @@
+server {
+   server_name www.<%= @site_config['name'] %>;
+   return 301 $scheme://<%= @site_config['name'] %>$request_uri;
+}
+
+server {
+	listen 80;
+
+	server_name <%= @site_config['name'] %>;
+
+	error_log <%= node['nginx']['log_dir'] %>/<%= @site_config['name'] %>/error.log;
+	access_log <%= node['nginx']['log_dir'] %>/<%= @site_config['name'] %>/access.log;
+
+	root <%= @www_root %>/<%= @site_config['name'] %>;
+	index index.html index.htm;
+
+	client_max_body_size 20m;
+	client_body_buffer_size 128k;
+}
