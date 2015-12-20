@@ -14,14 +14,14 @@ server {
   server_name <%= @site_config['name'] %>;
 
   ssl_stapling_verify on;
-	ssl_stapling on;
-	ssl_trusted_certificate <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/chain.pem;
-	include <%= node['trion']['ssl']['nginx_options_config'] %>;
-	ssl_certificate_key <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/privkey.pem;
-	ssl_certificate <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/fullchain.pem;
+  ssl_stapling on;
+  ssl_trusted_certificate <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/chain.pem;
+  include <%= node['trion']['ssl']['nginx_options_config'] %>;
+  ssl_certificate_key <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/privkey.pem;
+  ssl_certificate <%= node['trion']['ssl']['cert_home'] %>/<%= @site_config['name'] %>/fullchain.pem;
 
   error_log <%= node['nginx']['log_dir'] %>/<%= @site_config['name'] %>/error.log;
-	access_log <%= node['nginx']['log_dir'] %>/<%= @site_config['name'] %>/access.log;
+  access_log <%= node['nginx']['log_dir'] %>/<%= @site_config['name'] %>/access.log;
 
   root <%= @www_root %>/<%= @site_config['name'] %>;
   index index.html index.htm;
