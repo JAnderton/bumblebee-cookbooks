@@ -30,6 +30,12 @@ action :create_site do
       :www_root => node['trion']['default_www_root']
     })
   end
+
+  directory "#{node['nginx']['log_dir']}/#{node['trion']['sites'][site_name]['name']}" do
+    user node['nginx']['user']
+    group node['nginx']['group']
+    recursive true
+  end
 end
 
 action :create_redirect do
