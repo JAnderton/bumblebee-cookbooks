@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+include_recipe "apt"
 include_recipe "apache2"
 
 apache_site "default" do

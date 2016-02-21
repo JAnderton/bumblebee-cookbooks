@@ -17,7 +17,6 @@ suites:
   - name: default
     run_list:
       - recipe[hostname]
-      - recipe[apt]
       - recipe[trion::install_httpd]
       # - recipe[trion::disable_sites]
       # - recipe[trion::setup_www_root]
