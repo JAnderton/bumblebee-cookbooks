@@ -16,7 +16,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[trion::shim]
+      - recipe[trion::shim_includer]
     attributes:
 
 name: "Cybershark"

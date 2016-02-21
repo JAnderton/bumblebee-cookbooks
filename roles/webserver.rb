@@ -5,5 +5,5 @@ name "webserver"
 description "Chef role for all webserver machines"
 
 run_list(
-  "recipe[trion::shim]",
+  "recipe[trion::shim_includer]",
 )

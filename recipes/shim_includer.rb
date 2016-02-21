@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: trion-cookbooks
-# Recipe:: default
+# Recipe:: shim_includer
 #
 # Copyright (C) 2015 Karun Japhet
 #
