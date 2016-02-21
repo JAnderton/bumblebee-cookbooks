@@ -10,8 +10,6 @@ provisioner:
 
 platforms:
   - name: debian/jessie64
-  # - name: debian-8.2.0
-  # - name: debian-8.3.0
 
 suites:
   - name: default
