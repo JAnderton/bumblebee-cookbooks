@@ -50,3 +50,5 @@ Added [prorthymix.com](https://prorthymix.com) to the deployment code.
 * Fixed redirection of `domain.tld`, `www.domain.tld` and `https://www.domain.tld` to `https://domain.tld`
 
 # 0.4.0 (Under Development)
+
+* Move to Apache

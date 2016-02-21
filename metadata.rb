@@ -6,8 +6,9 @@ description      'Cookbooks for setting up the trion server to enable continuous
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.4.0'
 
-depends 'nginx'
-depends 'git'
 depends 'hostname'
-depends 'nodejs'
-depends 'build-essential'
+depends 'apt'
+depends 'apache2'
+# depends 'git'
+# depends 'nodejs'
+# depends 'build-essential'
